@@ -39,8 +39,8 @@ class App extends Component {
           mountOnEnter
           unmountOnExit
           onEnter={() => console.log('onEnter')}
-          onEntering={() => console.log('onEntering')}
-          onEntered={() => console.log('onEntered')}
+          onEntering={() => console.log('onEnter')}
+          onEntered={() => console.log('onEnter')}
           onExit={() => console.log('onExit')}
           onExiting={() => console.log('onExiting')}
           onExited={() => console.log('onExited')}
