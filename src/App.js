@@ -21,7 +21,7 @@ class App extends Component {
   };
 
   render() {
-    const { modalIsOpen } = this.state;
+    const { modalIsOpen, showBlock } = this.state;
     return (
       <div className='App'>
         <h1>React Animations</h1>
@@ -33,12 +33,7 @@ class App extends Component {
           Toggle
         </button>
         <br />
-        <Transition
-          in={this.state.showBlock}
-          timeout={300}
-          mountOnEnter
-          unmountOnExit
-        >
+        <Transition in={showBlock} timeout={300} mountOnEnter unmountOnExit>
           {(state) => (
             <div
               style={{
@@ -52,8 +47,11 @@ class App extends Component {
             ></div>
           )}
         </Transition>
-        <Modal show={modalIsOpen} closed={this.closeModal} />
-        <Backdrop show={modalIsOpen} />
+        <Transition in={modalIsOpen} timeout={300} mountOnEnter unmountOnExit>
+          {(state) => <Modal show={state} closed={this.closeModal} />}
+        </Transition>
+
+        {modalIsOpen && <Backdrop show={modalIsOpen} />}
         <button className='Button' onClick={this.showModal}>
           Open Modal
         </button>
